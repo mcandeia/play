@@ -2,12 +2,32 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $$$$$$$$$0 from "./actions/deploy.ts";
+import * as $0 from "./functions/context.ts";
+import * as $$$0 from "./loaders/fresh.gen.ts";
+import * as $$$1 from "./loaders/main.ts";
+import * as $$$2 from "./loaders/manifest.gen.ts";
+import * as $$$3 from "./loaders/import_map.ts";
+import * as $$$4 from "./loaders/files/serve.ts";
+import * as $$$$$$$$$0 from "./actions/files/remove.ts";
+import * as $$$$$$$$$1 from "./actions/files/createOrEdit.ts";
+import * as $$$$$$$$$2 from "./actions/deploy.ts";
 import { AppManifest } from "../deps.ts";
 
 const manifest = {
+  "functions": {
+    "play/functions/context.ts": $0,
+  },
+  "loaders": {
+    "play/loaders/files/serve.ts": $$$4,
+    "play/loaders/fresh.gen.ts": $$$0,
+    "play/loaders/import_map.ts": $$$3,
+    "play/loaders/main.ts": $$$1,
+    "play/loaders/manifest.gen.ts": $$$2,
+  },
   "actions": {
-    "play/actions/deploy.ts": $$$$$$$$$0,
+    "play/actions/deploy.ts": $$$$$$$$$2,
+    "play/actions/files/createOrEdit.ts": $$$$$$$$$1,
+    "play/actions/files/remove.ts": $$$$$$$$$0,
   },
   "name": "play",
   "baseUrl": import.meta.url,

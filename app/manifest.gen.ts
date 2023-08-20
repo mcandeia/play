@@ -11,6 +11,7 @@ import * as $$$4 from "./loaders/files/serve.ts";
 import * as $$$$$$$$$0 from "./actions/files/remove.ts";
 import * as $$$$$$$$$1 from "./actions/files/createOrEdit.ts";
 import * as $$$$$$$$$2 from "./actions/deploy.ts";
+import * as $$$$$$$$$$0 from "./workflows/newPlayground.ts";
 
 const manifest = {
   "functions": {
@@ -27,6 +28,9 @@ const manifest = {
     "play/actions/deploy.ts": $$$$$$$$$2,
     "play/actions/files/createOrEdit.ts": $$$$$$$$$1,
     "play/actions/files/remove.ts": $$$$$$$$$0,
+  },
+  "workflows": {
+    "play/workflows/newPlayground.ts": $$$$$$$$$$0,
   },
   "name": "play",
   "baseUrl": import.meta.url,

@@ -9,7 +9,7 @@ export default function newPlayground(_props: unknown) {
     ctx: WorkflowContext<ManifestOf<ReturnType<typeof app>>>,
   ): WorkflowGen<Playground> {
     const id: string = yield ctx.callLocalActivity(() => {
-      return crypto.randomUUID().replace("-", ""); // random contact card containing many properties
+      return crypto.randomUUID().replace("-", "").substring(0, 6); // random contact card containing many properties
     });
 
     yield ctx.invoke("play/actions/files/createOrEdit.ts", {

@@ -42,7 +42,7 @@ export interface State extends Props {
   denoDeployClient: () => Promise<ReturnType<typeof API["fromToken"]>>;
 }
 
-const PLAY_DOMAIN = "https://deco.cx/";
+const PLAY_DOMAIN = "https://play.deco.cx/";
 export default function App(
   state: Props,
 ): App<Manifest, State> {

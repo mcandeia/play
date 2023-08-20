@@ -1,4 +1,5 @@
-import { badRequest, context, Secret } from "deco/mod.ts";
+import { badRequest, context } from "deco/mod.ts";
+import { Secret } from "https://denopkg.com/deco-cx/apps@2ec513dbcc1b29edeec411ce99f184481e8e1a86/website/loaders/secret.ts";
 import { API } from "https://denopkg.com/denoland/deployctl@1.8.0/src/utils/api.ts";
 import type { AppContext as AC, App } from "../deps.ts";
 import type { Manifest } from "./manifest.gen.ts";

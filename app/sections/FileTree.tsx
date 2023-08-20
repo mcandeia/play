@@ -1,3 +1,4 @@
+import { IS_BROWSER } from "$fresh/runtime.ts";
 import MonacoEditor, {
   MonacoEditorBaseProps,
 } from "https://esm.sh/react-monaco-editor@0.40.0";
@@ -9,6 +10,9 @@ export default function FileTree({
   editor,
   files,
 }: SectionProps<typeof loader>) {
+  if (!IS_BROWSER) {
+    return null;
+  }
   return (
     <>
       {files.map((file) => {

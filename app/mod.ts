@@ -1,4 +1,6 @@
-import type { App, AppContext as AC } from "../deps.ts";
+import { badRequest, context, Secret } from "$live/mod.ts";
+import { API } from "https://denopkg.com/denoland/deployctl@1.8.0/src/utils/api.ts";
+import type { AppContext as AC, App } from "../deps.ts";
 import type { Manifest } from "./manifest.gen.ts";
 import manifest from "./manifest.gen.ts";
 
@@ -25,27 +27,39 @@ export interface FileSystem {
 export interface PlayFS {
   forPlay(playId: string): FileSystem;
 }
-
+export interface DenoConfig {
+  deployToken: Secret;
+}
 export interface Props {
   fs: PlayFS;
+  deno: DenoConfig;
   playDomain?: string;
 }
 
 export interface State extends Props {
   playDomain: string;
   serveFileUrl: (playId: string, location: string[]) => string;
+  denoDeployClient: () => Promise<ReturnType<typeof API["fromToken"]>>;
 }
 
 const PLAY_DOMAIN = "https://deco.cx/";
 export default function App(
   state: Props,
 ): App<Manifest, State> {
+  const playDomain = context.isDeploy ? PLAY_DOMAIN : "http://localhost:8000";
   return {
     manifest,
     state: {
-      playDomain: PLAY_DOMAIN,
+      playDomain,
+      denoDeployClient: async () => {
+        const token = await state.deno.deployToken.get();
+        if (!token) {
+          badRequest({ message: "Deno deploy token is missing" });
+        }
+        return API.fromToken(token!);
+      },
       serveFileUrl: (playId: string, location: string[]) =>
-        `${PLAY_DOMAIN}/live/invoke/play/loaders/files/serve.ts?props=${
+        `${playDomain}/live/invoke/play/loaders/files/serve.ts?props=${
           btoa(JSON.stringify({ location, playId }))
         }`,
       ...state,

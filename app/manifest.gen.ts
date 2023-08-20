@@ -11,7 +11,6 @@ import * as $$$4 from "./loaders/files/serve.ts";
 import * as $$$$$$$$$0 from "./actions/files/remove.ts";
 import * as $$$$$$$$$1 from "./actions/files/createOrEdit.ts";
 import * as $$$$$$$$$2 from "./actions/deploy.ts";
-import { AppManifest } from "../deps.ts";
 
 const manifest = {
   "functions": {
@@ -35,4 +34,4 @@ const manifest = {
 
 export type Manifest = typeof manifest;
 
-export default manifest satisfies AppManifest;
+export default manifest;

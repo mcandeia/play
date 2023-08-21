@@ -20,8 +20,10 @@ const playContext: LoaderFunction<
   Props,
   PlayContext,
   FunctionContext
-> = (_req, ctx) => ({
-  data: { id: ctx.params[ctx.state.$live.playParam ?? "playId"] },
-});
+> = (_req, ctx) => {
+  return {
+    data: { id: ctx.params[ctx.state.$live.playParam ?? "playId"] },
+  };
+};
 
 export default playContext;

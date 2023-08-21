@@ -8,11 +8,9 @@ export default function importMap(
 ) {
   return Response.json({
     "imports": {
-      "$live/": `https://denopkg.com/deco-cx/deco@${
-        decoVersion ?? "1.28.0-beta.6"
-      }/`,
+      "$live/": `https://denopkg.com/deco-cx/deco@${decoVersion ?? "1.29.0"}/`,
       "$fresh/": `https://denopkg.com/deco-cx/fresh@${
-        freshVersion ?? "1.3.5"
+        freshVersion ?? "5d7384631e8b8366c0d6cb15e158f43e0d01a218"
       }/`,
       "preact": "https://esm.sh/preact@10.15.1",
       "preact/": "https://esm.sh/preact@10.15.1/",

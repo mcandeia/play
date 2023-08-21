@@ -1,9 +1,18 @@
+import { extname } from "std/path/mod.ts";
 import { AppContext, PlayOptions } from "../../mod.ts";
 
 export interface Props extends PlayOptions {
   location: string[];
 }
-export default async function serveTs(
+const extensionToContentType: Record<string, string> = {
+  "ts": "application/typescript",
+  "tsx": "application/typescript",
+  "js": "application/javascript",
+  "jsx": "application/javascript",
+  "json": "application/json",
+  "jsonc": "application/jsonc",
+};
+export default async function serveFile(
   { location, playId }: Props,
   _req: Request,
   { fs }: AppContext,
@@ -12,10 +21,12 @@ export default async function serveTs(
   if (!file) {
     return new Response(null, { status: 404 });
   }
+  const fileExtension = extname(file.location[file.location.length - 1]);
   return new Response(file.content, {
     status: 200,
     headers: {
-      "content-type": "application/typescript",
+      "content-type": extensionToContentType[fileExtension] ??
+        "application/typescript",
     },
   });
 }

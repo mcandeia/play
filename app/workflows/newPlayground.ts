@@ -1,15 +1,26 @@
+import {
+  adjectives,
+  animals,
+  NumberDictionary,
+  uniqueNamesGenerator,
+} from "https://esm.sh/unique-names-generator@4.7.1";
 import { ManifestOf, WorkflowContext, WorkflowGen } from "../../deps.ts";
 import { default as app } from "../mod.ts";
 
 export interface Playground {
   id: string;
 }
+const numberDictionary = NumberDictionary.generate({ min: 10, max: 99 });
+
 export default function newPlayground(_props: unknown) {
   return function* (
     ctx: WorkflowContext<ManifestOf<ReturnType<typeof app>>>,
   ): WorkflowGen<Playground> {
     const id: string = yield ctx.callLocalActivity(() => {
-      return crypto.randomUUID().replace("-", "").substring(0, 6); // random contact card containing many properties
+      return uniqueNamesGenerator({
+        dictionaries: [animals, adjectives, numberDictionary],
+        length: 3,
+      });
     });
 
     yield ctx.invoke("play/actions/files/createOrEdit.ts", {

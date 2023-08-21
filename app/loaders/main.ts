@@ -49,7 +49,7 @@ await start(manifest, {
   plugins: [
     ...plugins({
       manifest: decoManifest,
-      site: { namespace: "deco-sites/${playId}" },
+      site: { namespace: "${playId}" },
     }),
     partytownPlugin(),
   ],

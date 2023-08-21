@@ -9,9 +9,10 @@ import * as $$$2 from "./loaders/manifest.gen.ts";
 import * as $$$3 from "./loaders/import_map.ts";
 import * as $$$4 from "./loaders/files/serve.ts";
 import * as $$$$$$0 from "./sections/FileTree.tsx";
-import * as $$$$$$$$$0 from "./actions/files/remove.ts";
-import * as $$$$$$$$$1 from "./actions/files/createOrEdit.ts";
-import * as $$$$$$$$$2 from "./actions/deploy.ts";
+import * as $$$$$$$$$0 from "./actions/new.ts";
+import * as $$$$$$$$$1 from "./actions/files/remove.ts";
+import * as $$$$$$$$$2 from "./actions/files/createOrEdit.ts";
+import * as $$$$$$$$$3 from "./actions/deploy.ts";
 import * as $$$$$$$$$$0 from "./workflows/newPlayground.ts";
 
 const manifest = {
@@ -29,9 +30,10 @@ const manifest = {
     "play/sections/FileTree.tsx": $$$$$$0,
   },
   "actions": {
-    "play/actions/deploy.ts": $$$$$$$$$2,
-    "play/actions/files/createOrEdit.ts": $$$$$$$$$1,
-    "play/actions/files/remove.ts": $$$$$$$$$0,
+    "play/actions/deploy.ts": $$$$$$$$$3,
+    "play/actions/files/createOrEdit.ts": $$$$$$$$$2,
+    "play/actions/files/remove.ts": $$$$$$$$$1,
+    "play/actions/new.ts": $$$$$$$$$0,
   },
   "workflows": {
     "play/workflows/newPlayground.ts": $$$$$$$$$$0,

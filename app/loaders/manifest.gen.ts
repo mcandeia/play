@@ -28,13 +28,13 @@ const manifest = {
     ${
       blks.map((blk, i) => {
         const keys = blk.files.map((file, fileIdx) => {
-          return `"./${file.location.join("/")}":${"\$".repeat(fileIdx + 1)}${
-            i + 1
-          },`;
+          return `"${playId}/${file.location.join("/")}":${
+            "\$".repeat(fileIdx + 1)
+          }${i + 1},`;
         }).join("\n");
         return `${blk.type}: {
             ${keys}
-        }`;
+        },`;
       }).join("\n")
     }
   name: "${playId}",
@@ -47,7 +47,7 @@ export default manifest;
 `,
     {
       status: 200,
-      headers: { "content-type": "applcation/typescript" },
+      headers: { "content-type": "application/typescript" },
     },
   );
 }

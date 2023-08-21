@@ -33,7 +33,7 @@ export default manifest;
 `,
     {
       status: 200,
-      headers: { "content-type": "applcation/typescript" },
+      headers: { "content-type": "application/typescript" },
     },
   );
 }

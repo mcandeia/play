@@ -1,12 +1,16 @@
 export interface ImportMapOptions {
   freshVersion?: string;
+  decoVersion?: string;
 }
 export default function importMap(
-  { freshVersion }: ImportMapOptions,
+  { freshVersion, decoVersion }: ImportMapOptions,
   _req: Request,
 ) {
   return Response.json({
     "imports": {
+      "$live/": `https://denopkg.com/deco-cx/deco@${
+        decoVersion ?? "1.28.0-beta.6"
+      }/`,
       "$fresh/": `https://denopkg.com/deco-cx/fresh@${
         freshVersion ?? "1.3.5"
       }/`,
